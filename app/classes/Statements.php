@@ -29,6 +29,13 @@ class Statements extends Connection{
     return $stmt;
   }
 
+  public function getRowsNumber(){
+    $query = "SELECT COUNT(*) FROM User";
+    $stmt = $this->connect()->query($query);
+    $count = $stmt->fetchColumn();
+    return $count;
+  }
+
   public function insert($name, $email, $password, $status, $created_at, $updated_at){
     $query = "INSERT INTO User (id, name, email, password, status, created_at, updated_at) VALUES (null, :name, :email, :password, :status, :created_at, :updated_at)";
     try{

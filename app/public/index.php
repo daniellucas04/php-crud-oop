@@ -62,7 +62,7 @@
         </thead>
         <tbody>
           <?php 
-            if($result){
+            if($database->getRowsNumber() > 0){
               foreach ($result as $row) {
                 ?>
                   <tr id="table-row">
@@ -89,6 +89,10 @@
                   </tr>
                 <?php 
               }
+            }else{
+              ?>
+                <h1 class="fs-3 text-center">Nenhum usuário cadastrado</h1>
+              <?php
             }
           ?>
         </tbody>
