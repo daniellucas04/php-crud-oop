@@ -34,6 +34,19 @@ Ao acessar a conexão, será necessário rodar um script SQL para criação do b
 ![image](https://github.com/daniellucas04/php-crud-oop/assets/97129532/3cd06a6c-e39d-48a7-9b04-0bfec44cce2a)
 
 
+### Modifique as infromações para conexão do banco
+
+Acesse o arquivo `/app/classes/Connection.php` e altere o valor das variáveis privadas para se conectar ao banco de dados.
+
+```php
+  // Modifique o username e password conforme sua conexão do MySQL Workbench
+  // Os valores padrões da aplicação são estes:
+  private $_host = "localhost";
+  private $_username = "root";
+  private $_password = "@Root123";
+  private $_database = "DBUser";
+```
+
 ### Com o banco de dados criado, podemos rodar o projeto
 
 Abra um terminal dentro da pasta `/app` e digite o seguinte comando:
