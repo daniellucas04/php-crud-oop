@@ -5,7 +5,7 @@ class Connection{
   // alterar informações de conexão com o banco de dados
   private $_host = "localhost";
   private $_username = "root";
-  private $_password = "@Root123";
+  private $_password = "";
   private $_database = "DBUser";
 
   protected function connect(){

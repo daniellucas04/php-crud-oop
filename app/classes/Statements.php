@@ -15,11 +15,7 @@ class Statements extends Connection{
       $stmt->bindParam(":status", $status);
       $stmt->execute();
     }
-
-    if($stmt->num_rows < 0)
-      return false;
-    else
-      return $stmt;
+    return $stmt;
   }
 
   public function getUser($id){
