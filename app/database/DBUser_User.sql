@@ -16,6 +16,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Create database `DBUser`
+--
+CREATE DATABASE DBUser;
+USE DBUser;
+
+--
 -- Table structure for table `User`
 --
 
