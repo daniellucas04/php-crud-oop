@@ -4,17 +4,15 @@ Este guia usará como interface o software **XAMPP**.
 
 Primeiro, abra o XAMPP e inicie os serviços `Apache` e `MySQL`
 
-> Adicionar imagem dos serviços iniciados
+![image](https://github.com/user-attachments/assets/9fa5a363-3ffd-481d-85c0-246f623fc449)
 
 Acesse o painel administrativo do MySQL
 
-> Adicionar imagem do phpMyAdmin
+![image](https://github.com/user-attachments/assets/d2f55e89-68b9-4ccd-ae42-7272a29afd4f)
 
-Acesse a aba **importar** no topo do painel e escolha o arquivo do banco de dados salvo em `app/database/DBUser_User.sql`.
+Acesse a aba **importar** no topo do painel e escolha o arquivo do banco de dados salvo em `app/database/dbuser.sql`.
 
-> Exibir botão para importar
-
-Clique em importar para inicializar o processe de importação do banco de dados
+Clique em importar no final da página para inicializar o processo de importação do banco de dados
 
 ### Verificação
 
