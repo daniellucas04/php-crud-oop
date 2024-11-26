@@ -1,20 +1,20 @@
 <?php
-
 class Connection{
-
   // alterar informações de conexão com o banco de dados
-  private $_host = "localhost";
-  private $_username = "root";
-  private $_password = "";
-  private $_database = "DBUser";
+  private $host = "localhost";
+  private $username = "root";
+  private $password = "";
+  private $database = "dbuser";
+  protected $connection;
 
   protected function connect(){
-    $this->connection = new PDO("mysql:host=$this->_host;dbname=$this->_database", $this->_username, $this->_password);
-    $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    if(!$this->connection){
-      echo "Connection failed. Try again";
-      exit;
-    }
+    try {
+      $this->connection = new PDO("mysql:host=$this->host;dbname=$this->database", $this->username, $this->password);
+      $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $exception) {
+		echo "<pre>{$exception->getMessage()}</pre>";
+		die();
+	}
     return $this->connection;
   }
 }

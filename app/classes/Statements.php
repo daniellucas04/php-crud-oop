@@ -4,10 +4,9 @@ include_once "Connection.php";
 class Statements extends Connection{
   
   public function getData($status = ""){
-
     if($status == ""){
       $query = "SELECT * FROM User";
-      $stmt = $this->connect()->prepare($query);  
+      $stmt = $this->connect()->prepare($query);
       $stmt->execute();
     }else{
       $query = "SELECT * FROM User WHERE status=:status";
@@ -44,34 +43,27 @@ class Statements extends Connection{
       $stmt->bindParam(':updated_at', $updated_at);
 
       $stmt->execute();
-    }catch(PDOException $e){
-      echo "Falha ao inserir os dados: \n" . $e->getMessage();
-    }
+    }catch(PDOException $e){}
   }
 
   public function update($id, $name, $email, $status){    
-    try{
-      if($status === "Ativo"){
-        $query = "UPDATE User SET name=:name, email=:email, status='Ativo' WHERE id=:id";
+	  try{
+		$statusField = (!empty($status)) ? ', status=:status' : null;
+		$status = (!empty($status) AND $status === 'Ativo') ? 'Ativo' : 'Inativo';
+
+		$query = "UPDATE User SET name=:name, email=:email $statusField WHERE id=:id";
         $stmt = $this->connect()->prepare($query);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':id', $id);
-        
-        $stmt->execute();
-      } else {
-        $query = "UPDATE User SET name=:name, email=:email, status='Inativo' WHERE id=:id";
-        $stmt = $this->connect()->prepare($query);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':status', $status);
+		if ( !empty($statusField) ) {
+			$stmt->bindParam(':status', $status);
+		}
         $stmt->bindParam(':id', $id);
 
         $stmt->execute();
-      }
     }catch(PDOException $e){
-      echo "Falha ao atualizar os dados: \n" . $e->getMessage();
-    }
+		echo $e->getMessage();
+	}
   }
 
   public function delete($id){
@@ -82,9 +74,6 @@ class Statements extends Connection{
       $stmt->bindParam(':id', $id);
 
       $stmt->execute();
-    }catch(PDOException $e){
-      echo "Falha ao apagar o usuário: \n" . $e->getMessage();
-    }
-
+    }catch(PDOException $e){}
   }
 }

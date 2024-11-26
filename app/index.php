@@ -1,15 +1,14 @@
-<?php 
-  include_once "../classes/Statements.php";
+<?php
+include_once "classes/Statements.php";
 
-  $database = new Statements();
+$database = new Statements();
 
-  $search = $_GET['search'] ?? null;
-  if(empty($search) || $search === "Todos"){
-    $result = $database->getData();
-  }else{
-    $result = $database->getData($search);
-  }
-
+$search = $_GET['search'] ?? null;
+if(empty($search) || $search === "Todos"){
+	$result = $database->getData();
+}else{
+	$result = $database->getData($search);
+}
 ?>
 
 <!DOCTYPE html>

@@ -1,6 +1,5 @@
 <?php
-
-include_once '../../classes/Statements.php';
+include_once '../classes/Statements.php';
 
 $database = new Statements();
 $created_at = date("Y-m-d H:i:s");

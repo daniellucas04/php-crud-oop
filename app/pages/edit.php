@@ -1,5 +1,5 @@
 <?php
-  include_once "../../classes/Statements.php";
+include_once '../classes/Statements.php';
 
   $database = new Statements();
   $id = $_GET['id'];
@@ -34,7 +34,7 @@
   </div>
   <main class="main-page">
     <form class="add-form" action="../actions/action_update.php?id=<?= $id?>" method="POST">
-      <?php 
+      	<?php 
         foreach ($result as $data) {
           ?>
             <div class="mb-3">
@@ -45,19 +45,14 @@
               <label for="email" class="form-label">Email</label>
               <input type="email" class="form-control" id="email" name="email" value="<?=$data['email']?>" aria-describedby="emailHelp">
             </div>
-            <?php
-          if($data['status'] === "Inativo"){
-            ?>
               <small><strong>Status</strong></small>
               <span class="form-check">
-                <input class="form-check-input" name="status" id="status" type="checkbox" value="Ativo" />
-                <label for="status" class="form-check-label">Ativar usuário</label>
+                <input class="form-check-input" name="status" id="status" type="checkbox" value="<?= ($data['status'] == 'Ativo') ? 'Inativo' : 'Ativo'; ?>" />
+                <label for="status" class="form-check-label"><?= ($data['status'] == 'Ativo') ? 'Inativar' : 'Ativar' ?> usuário</label>
               </span>
-            <?php
-          }
+		<?php
         }
         ?>
-      </div>
       <button type="submit" class="btn btn-primary mt-2">Finalizar edição</button>
     </form>
   </main>
