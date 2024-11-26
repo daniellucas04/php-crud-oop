@@ -60,7 +60,7 @@ Acesse o arquivo `/app/classes/Connection.php` e altere o valor das variáveis p
 
 ```php
   // Modifique o username e password conforme sua conexão do MySQL/MariaDB
-  private $host = "localhost"
+  private $host = "localhost";
   private $username = "root";
   private $password = "";
   private $database = "DBUser";
