@@ -3,7 +3,7 @@
 
   $database = new Statements();
 
-  $search = $_GET['search'];
+  $search = $_GET['search'] ?? null;
   if(empty($search) || $search === "Todos"){
     $result = $database->getData();
   }else{

@@ -18,7 +18,7 @@
 --
 -- Create database `DBUser`
 --
-CREATE DATABASE DBUser;
+CREATE DATABASE IF NOT EXISTS DBUser;
 USE DBUser;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `User` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
