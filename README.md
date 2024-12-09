@@ -44,13 +44,23 @@ Primeiramente, vamos iniciar um container usando a imagem do MySQL
 > docker container run -d -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=1 --name (nome_do_container) mysql
 ```
 
-Espere até que o MySQL seja completamente incializado e pronto, o serviço `mysql` já está rodando no seu container. Agora basta apenas criar o banco de dados no seu container.
+Espere até que o MySQL seja completamente incializado e pronto, o serviço `mysql` já está rodando no seu container. Agora basta apenas criar o banco de dados.
 
-> Esta parte de criação do banco de dados será feita via terminal
+> Esta parte de criação do banco de dados será feita via terminal.
 
-Usando o comando `mysql -u root -e "create database if not exists dbuser"` vamos criar o banco de dados **DBUser**.
+Usando o comando abaixo vamos criar o banco de dados **DBUser**.
 
-Usando o comando `mysql -u root DBUser < /database/dbuser.sql` vamos cadastrar a tabela necessária da aplicação no banco de dados.
+```bash
+mysql -u root -e "create database if not exists dbuser"
+```
+
+Usando o comando abaixo vamos cadastrar a tabela necessária da aplicação no banco de dados.
+
+```bash
+mysql -u root DBUser < /database/dbuser.sql
+```
+
+<mark>Atenção: A criação do banco de dados não é feito dentro de nenhum dos containers e sim na sua máquina</mark>
 
 Dessa maneira o banco já está pronto para uso. Porém ainda é preciso alterar as variáveis de configuração na aplicação.
 
