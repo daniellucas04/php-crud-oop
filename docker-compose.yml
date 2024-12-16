@@ -1,0 +1,26 @@
+services:
+  db:
+    image: mariadb:latest
+    ports:
+      - "3306:3306"
+    environment:
+      - MARIADB_USER=root
+      - MARIADB_PASSWORD=
+      - MARIADB_DATABASE=dbuser
+      - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=1
+      - MARIADB_ROOT_PASSWORD=
+    volumes:
+      - ./app/database:/var/lib/mysql
+      - ./app/database/dbuser.sql:/docker-entrypoint-initdb.d/init.sql
+
+  app:
+    image: daniellucas04/php-app:latest
+    ports:
+      - "80:80"
+    environment:
+      - MARIADB_HOST=db
+      - MARIADB_USER=root
+      - MARIADB_PASS=
+      - MARIADB_DATABASE=dbuser
+    depends_on:
+      - db

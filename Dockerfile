@@ -1,7 +1,3 @@
-FROM php:7.4-apache
+FROM alpine/git
 
-RUN docker-php-ext-install pdo pdo_mysql
-
-COPY app/ /var/www/html
-
-EXPOSE 80
+RUN git clone https://github.com/daniellucas04/php-crud-oop.git && docker-compose up
