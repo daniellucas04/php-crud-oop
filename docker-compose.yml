@@ -12,9 +12,11 @@ services:
     volumes:
       - ./app/database:/var/lib/mysql
       - ./app/database/dbuser.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app
 
   app:
-    image: daniellucas04/php-app:latest
+    build: .
     ports:
       - "80:80"
     environment:
@@ -24,3 +26,8 @@ services:
       - MARIADB_DATABASE=dbuser
     depends_on:
       - db
+    networks:
+      - app
+
+networks:
+  app:

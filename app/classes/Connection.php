@@ -1,11 +1,18 @@
 <?php
 class Connection{
   // alterar informações de conexão com o banco de dados
-  private $host = "localhost";
-  private $username = "root";
-  private $password = "";
-  private $database = "dbuser";
+  private $host;
+  private $username;
+  private $password;
+  private $database;
   protected $connection;
+
+  public function __construct() {
+    $this->host = $_ENV['MARIADB_HOST'];
+    $this->username = $_ENV['MARIADB_USER'];
+    $this->password = $_ENV['MARIADB_PASS'];
+    $this->database = $_ENV['MARIADB_DATABASE'];
+  }
 
   protected function connect(){
     try {
